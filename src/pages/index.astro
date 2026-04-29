@@ -1,11 +1,145 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Nav from '../components/Nav.astro';
+import Hero from '../components/sections/Hero.astro';
+import Education from '../components/sections/Education.astro';
+import Experience from '../components/sections/Experience.astro';
+import Projects from '../components/sections/Projects.astro';
+import HireMe from '../components/sections/HireMe.astro';
+import '../styles/global.css';
 ---
 
 <Layout>
-	<Welcome />
+  <!-- Mobile nav overlay -->
+  <div
+    id="nav-overlay"
+    class="hidden fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+    aria-hidden="true"
+  ></div>
+
+  <div class="flex h-screen overflow-hidden">
+    <Nav />
+
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <!-- Mobile header -->
+      <header class="md:hidden flex-shrink-0 flex items-center justify-between px-4 h-14 bg-[#09091a] border-b border-white/[0.07] z-30">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-md bg-indigo-500 flex items-center justify-center text-white text-xs font-bold font-mono">
+            KU
+          </div>
+          <span class="text-sm font-semibold text-white">Kristoff Urcia</span>
+        </div>
+        <button
+          id="hamburger"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          class="p-2 rounded-lg hover:bg-white/[0.08] text-slate-400 hover:text-white transition-colors"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6"  x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Content area — sections render here -->
+      <main class="flex-1 relative overflow-hidden">
+        <section data-section="hero" class="absolute inset-0 overflow-y-auto anim-in" aria-label="Home">
+          <Hero />
+        </section>
+
+        <section data-section="education" class="absolute inset-0 overflow-y-auto hidden" aria-label="Education" aria-hidden="true">
+          <Education />
+        </section>
+
+        <section data-section="experience" class="absolute inset-0 overflow-y-auto hidden" aria-label="Experience" aria-hidden="true">
+          <Experience />
+        </section>
+
+        <section data-section="projects" class="absolute inset-0 overflow-y-auto hidden" aria-label="Projects" aria-hidden="true">
+          <Projects />
+        </section>
+
+        <section data-section="hire" class="absolute inset-0 overflow-y-auto hidden" aria-label="Hire Me" aria-hidden="true">
+          <HireMe />
+        </section>
+      </main>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  // ── Section switching ──────────────────────────────────────────────────────
+
+  function switchTo(id: string) {
+    const active = document.querySelector<HTMLElement>('[data-section]:not(.hidden)');
+    const target = document.querySelector<HTMLElement>(`[data-section="${id}"]`);
+    if (!target || target === active) return;
+
+    active?.classList.add('anim-out');
+
+    setTimeout(() => {
+      active?.classList.remove('anim-out');
+      active?.classList.add('hidden');
+      active?.setAttribute('aria-hidden', 'true');
+
+      target.classList.remove('hidden');
+      target.setAttribute('aria-hidden', 'false');
+      target.classList.add('anim-in');
+      target.addEventListener('animationend', () => target.classList.remove('anim-in'), { once: true });
+
+      // Scroll to top of new section
+      target.scrollTop = 0;
+    }, 220);
+
+    // Update nav active states
+    document.querySelectorAll<HTMLElement>('[data-nav-item]').forEach((el) => {
+      const isActive = el.dataset.navItem === id;
+      el.setAttribute('aria-current', isActive ? 'page' : 'false');
+    });
+  }
+
+  // Nav item clicks (both sidebar and hero CTA buttons sharing data-nav-item)
+  document.querySelectorAll<HTMLElement>('[data-nav-item]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const id = el.dataset.navItem!;
+      switchTo(id);
+      // Close mobile nav when a section is selected
+      closeNav();
+    });
+  });
+
+  // ── Mobile nav drawer ──────────────────────────────────────────────────────
+
+  const navPanel = document.getElementById('nav-panel');
+  const overlay  = document.getElementById('nav-overlay');
+  const hamburger = document.getElementById('hamburger');
+  const navClose  = document.getElementById('nav-close');
+
+  function openNav() {
+    navPanel?.classList.add('translate-x-0');
+    navPanel?.classList.remove('-translate-x-full');
+    overlay?.classList.remove('hidden');
+    hamburger?.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeNav() {
+    navPanel?.classList.remove('translate-x-0');
+    navPanel?.classList.add('-translate-x-full');
+    overlay?.classList.add('hidden');
+    hamburger?.setAttribute('aria-expanded', 'false');
+  }
+
+  hamburger?.addEventListener('click', () => {
+    navPanel?.classList.contains('translate-x-0') ? closeNav() : openNav();
+  });
+
+  overlay?.addEventListener('click', closeNav);
+  navClose?.addEventListener('click', closeNav);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+  });
+</script>
