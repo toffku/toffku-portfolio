@@ -33,11 +33,11 @@ const contacts = [
       <span class="text-white/50">Something Together</span>
     </h2>
 
-    <p class="text-slate-400 text-base leading-relaxed mb-2 max-w-lg">
+    <p class="text-gray-400 text-base leading-relaxed mb-2 max-w-lg">
       I'm actively seeking new opportunities as a Software Engineer — whether
       that's a graduate role, placement, or junior position.
     </p>
-    <p class="text-slate-500 text-sm leading-relaxed mb-8 max-w-lg">
+    <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
       If you're looking for someone who writes clean code, communicates well
       across teams, and brings genuine enthusiasm to the work — I'd love to
       hear from you.
@@ -52,15 +52,15 @@ const contacts = [
           rel={c.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
           class="group flex items-center gap-4 p-4 rounded-xl border border-white/[0.08] hover:border-white/[0.20] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200"
         >
-          <div class="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-slate-400 group-hover:text-white transition-colors flex-shrink-0">
+          <div class="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-gray-400 group-hover:text-white transition-colors flex-shrink-0">
             <span set:html={c.icon} />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-xs text-slate-600 font-medium mb-0.5">{c.label}</p>
+            <p class="text-xs text-gray-600 font-medium mb-0.5">{c.label}</p>
             <p class="text-sm text-white font-medium truncate">{c.value}</p>
-            <p class="text-xs text-slate-600 mt-0.5">{c.description}</p>
+            <p class="text-xs text-gray-600 mt-0.5">{c.description}</p>
           </div>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-700 group-hover:text-slate-400 transition-colors flex-shrink-0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 group-hover:text-gray-400 transition-colors flex-shrink-0">
             <path d="M7 17L17 7M7 7h10v10"/>
           </svg>
         </a>
