@@ -1,4 +1,10 @@
 ---
+const typeColors: Record<string, string> = {
+  "Full-time":   "bg-green-500/10 text-green-400/80 border-green-500/20",
+  "Part-time":   "bg-blue-500/10 text-blue-400/80 border-blue-500/20",
+  "Competition": "bg-amber-500/10 text-amber-400/80 border-amber-500/20",
+};
+
 const entries = [
   {
     role: "Information Technology Development Assistant",
@@ -69,7 +75,7 @@ const entries = [
                 <p class="text-sm text-gray-400 font-medium">{entry.company}</p>
               </div>
               <div class="flex flex-col md:items-end items-start gap-1.5 flex-shrink-0">
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-white/[0.05] text-gray-400 border-white/[0.10]">
+                <span class={`text-xs font-semibold px-2.5 py-1 rounded-full border ${typeColors[entry.type] ?? "bg-white/[0.05] text-gray-400 border-white/[0.10]"}`}>
                   {entry.type}
                 </span>
                 <span class="text-xs text-gray-500 font-mono whitespace-nowrap">{entry.period}</span>
