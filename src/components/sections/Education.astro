@@ -37,7 +37,7 @@ const entries = [
       {entries.map((entry) => (
         <div class="relative flex gap-6 pb-10 last:pb-0">
           <div class="flex-shrink-0 mt-1">
-            <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 bg-white/[0.08] z-10 relative"></div>
+            <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 bg-[#222] z-10 relative"></div>
           </div>
 
           <div class="flex-1 bg-white/[0.03] hover:bg-white/[0.05] border border-white/[0.08] rounded-xl p-5 transition-colors duration-200">
@@ -46,7 +46,7 @@ const entries = [
                 <h3 class="text-base font-semibold text-white leading-snug mb-1">{entry.degree}</h3>
                 <p class="text-sm text-gray-400 font-medium">{entry.institution}</p>
               </div>
-              <div class="flex flex-col items-end gap-1.5 flex-shrink-0">
+              <div class="flex flex-col md:items-end items-start gap-1.5 flex-shrink-0">
                 {entry.inProgress ? (
                   <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
                     {entry.status}
