@@ -1,54 +1,5 @@
 ---
-const typeColors: Record<string, string> = {
-  "Full-time":   "bg-green-500/10 text-green-400/80 border-green-500/20",
-  "Part-time":   "bg-blue-500/10 text-blue-400/80 border-blue-500/20",
-  "Competition": "bg-amber-500/10 text-amber-400/80 border-amber-500/20",
-};
-
-const entries = [
-  {
-    role: "Information Technology Development Assistant",
-    company: "CCL Design",
-    period: "Sep 2024 – Sep 2025",
-    type: "Full-time",
-    bullets: [
-      "Collaborated with senior developers on internal and customer-facing applications.",
-      "Translated business requirements into scalable technical solutions.",
-      "Managed deployment cycles and contributed to release planning.",
-      "Facilitated cross-departmental collaboration and global team communication.",
-    ],
-  },
-  {
-    role: "Site Admin",
-    company: "The Immaculate Conception",
-    period: "Sep 2025 – Present",
-    type: "Part-time",
-    bullets: [
-      "Manage and maintain the organisation's public-facing website.",
-      "Ensure content accuracy, accessibility, and timely updates.",
-    ],
-  },
-  {
-    role: "Game Development Competition Winner",
-    company: "Ubisoft Reflections",
-    period: "Aug 2019",
-    type: "Competition",
-    bullets: [
-      "Won a competitive game development challenge hosted by Ubisoft Reflections.",
-      "Designed and built a complete game prototype under competition constraints.",
-    ],
-  },
-  {
-    role: "Crew Member",
-    company: "McDonald's",
-    period: "Jun 2022 – Sep 2024",
-    type: "Part-time",
-    bullets: [
-      "Delivered high-quality customer service in a fast-paced environment.",
-      "Developed strong teamwork, communication, and time management skills.",
-    ],
-  },
-];
+import { experienceEntries, typeColors } from "@/data/experience";
 ---
 
 <div class="min-h-full px-8 py-12 md:px-14 md:py-16 overflow-y-auto">
@@ -62,7 +13,7 @@ const entries = [
     <div class="relative flex flex-col gap-0">
       <div class="absolute left-[7px] top-4 bottom-4 w-px bg-white/[0.08]"></div>
 
-      {entries.map((entry) => (
+      {experienceEntries.map((entry) => (
         <div class="relative flex gap-6 pb-8 last:pb-0">
           <div class="flex-shrink-0 mt-1">
             <div class="w-3.5 h-3.5 rounded-full border-2 border-white/30 bg-[#222] z-10 relative"></div>

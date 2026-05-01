@@ -6,12 +6,12 @@ import Education from '../components/sections/Education.astro';
 import Experience from '../components/sections/Experience.astro';
 import Projects from '../components/sections/Projects.astro';
 import HireMe from '../components/sections/HireMe.astro';
-import avatarSrc from '../assets/images/tk-square.jpg';
 import Image from 'astro/components/Image.astro';
+import { site } from '@/data/site';
 import '../styles/global.css';
 ---
 
-<Layout>
+<Layout title={site.meta.title} description={site.meta.description}>
   <!-- Mobile nav overlay -->
   <div
     id="nav-overlay"
@@ -26,17 +26,17 @@ import '../styles/global.css';
       <!-- Mobile header -->
       <header class="md:hidden flex-shrink-0 flex items-center justify-between px-4 h-14 bg-[#111] border-b border-white/[0.07] z-30">
         <div class="flex items-center gap-2.5">
-           <div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 relative bg-white/[0.08]">
-        <Image
-          src={avatarSrc}
-          alt="Avatar"
-          width={40}
-          height={40}
-          class="object-cover w-full h-full"
-          loading="eager"
-          />
-      </div>
-          <span class="text-sm font-semibold text-white">Kristoff Urcia (toffku)</span>
+          <div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 relative bg-white/[0.08]">
+            <Image
+              src={site.avatar}
+              alt={`${site.name} avatar`}
+              width={40}
+              height={40}
+              class="object-cover w-full h-full"
+              loading="eager"
+            />
+          </div>
+          <span class="text-sm font-semibold text-white">{site.name} ({site.handle})</span>
         </div>
         <button
           id="hamburger"

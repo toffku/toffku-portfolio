@@ -1,12 +1,14 @@
 ---
+import { site } from "@/data/site";
+
 interface Props {
   title?: string;
   description?: string;
 }
 
 const {
-  title = "Kristoff Urcia — Software Engineer",
-  description = "Software Engineer based in Glasgow. Portfolio showcasing projects in TypeScript, React Native, and web development.",
+  title = site.meta.title,
+  description = site.meta.description,
 } = Astro.props;
 ---
 

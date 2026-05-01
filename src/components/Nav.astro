@@ -1,39 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
-import avatarSrc from "../assets/images/tk-square.jpg";
-
-const navItems = [
-  {
-    id: "hero",
-    label: "Home",
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
-    activeClasses: "aria-[current=page]:text-indigo-300 aria-[current=page]:bg-indigo-500/[0.08] aria-[current=page]:border-indigo-400/30",
-  },
-  {
-    id: "education",
-    label: "Education",
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
-    activeClasses: "aria-[current=page]:text-sky-300 aria-[current=page]:bg-sky-500/[0.08] aria-[current=page]:border-sky-400/30",
-  },
-  {
-    id: "experience",
-    label: "Experience",
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`,
-    activeClasses: "aria-[current=page]:text-amber-300 aria-[current=page]:bg-amber-500/[0.08] aria-[current=page]:border-amber-400/30",
-  },
-  {
-    id: "projects",
-    label: "Projects",
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
-    activeClasses: "aria-[current=page]:text-violet-300 aria-[current=page]:bg-violet-500/[0.08] aria-[current=page]:border-violet-400/30",
-  },
-  {
-    id: "hire",
-    label: "Hire Me",
-    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-    activeClasses: "aria-[current=page]:text-emerald-300 aria-[current=page]:bg-emerald-500/[0.08] aria-[current=page]:border-emerald-400/30",
-  },
-];
+import { site } from "@/data/site";
+import { navItems } from "@/data/navigation";
+import { socials } from "@/data/socials";
 ---
 
 <aside
@@ -59,23 +28,25 @@ const navItems = [
     <div class="flex items-center gap-3 mb-4">
       <div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 relative bg-white/[0.08]">
         <Image
-          src={avatarSrc}
-          alt="Avatar"
+          src={site.avatar}
+          alt={`${site.name} avatar`}
           width={40}
           height={40}
           class="object-cover w-full h-full"
           loading="eager"
-          />
+        />
       </div>
       <div class="min-w-0">
-        <p class="text-sm font-semibold text-white truncate">Kristoff Urcia (toffku)</p>
-        <p class="text-xs text-gray-500 truncate">Software Engineer</p>
+        <p class="text-sm font-semibold text-white truncate">{site.name} ({site.handle})</p>
+        <p class="text-xs text-gray-300 truncate">{site.title}</p>
       </div>
     </div>
-    <div class="flex items-center gap-2 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full px-3 py-1.5 w-fit">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot flex-shrink-0"></span>
-      <span class="text-xs text-emerald-400 font-medium">Open to work</span>
-    </div>
+    {site.availability.available && (
+      <div class="flex items-center gap-2 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full px-3 py-1.5 w-fit">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot flex-shrink-0"></span>
+        <span class="text-xs text-emerald-400 font-medium">{site.availability.label}</span>
+      </div>
+    )}
   </div>
 
   <div class="h-px bg-white/[0.06] mx-4"></div>
@@ -98,38 +69,17 @@ const navItems = [
   <div class="p-4 border-t border-white/[0.06]">
     <p class="text-xs text-gray-700 uppercase tracking-widest font-semibold mb-3">Connect</p>
     <div class="flex items-center gap-2">
-      <a
-        href="https://github.com/toffku"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
-        </svg>
-      </a>
-      <a
-        href="https://linkedin.com/in/kristoff-urcia"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      </a>
-      <a
-        href="mailto:kristoffurcia.ku@gmail.com"
-        aria-label="Email"
-        class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="16" x="2" y="4" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-      </a>
+      {socials.map((social) => (
+        <a
+          href={social.href}
+          target={social.href.startsWith("mailto") ? undefined : "_blank"}
+          rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+          aria-label={social.label}
+          class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
+        >
+          <span set:html={social.icon} />
+        </a>
+      ))}
     </div>
   </div>
 </aside>
