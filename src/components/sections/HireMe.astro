@@ -3,50 +3,46 @@ import { contacts } from "@/data/contact";
 import { site } from "@/data/site";
 ---
 
-<div class="min-h-full flex items-center px-8 py-12 md:px-14 md:py-16">
-  <div class="max-w-xl w-full">
-    <p class="font-mono text-xs text-white/25 mb-2">05 / Hire Me</p>
+<div class="min-h-full flex flex-col justify-center px-8 md:px-10 py-14">
+  <div class="max-w-sm">
 
-    <h2 class="text-4xl font-extrabold text-white mb-3 leading-tight">
+    <p class="font-mono text-xs text-white/[0.18] mb-3 tracking-wider">05 / Hire Me</p>
+
+    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
       Let's Build<br />
-      <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Something Together</span>
+      <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+        Something Together
+      </span>
     </h2>
 
-    <p class="text-gray-400 text-base leading-relaxed mb-2 max-w-lg">
-      I'm actively seeking new opportunities as a Software Engineer — whether
-      that's a graduate role, placement, or junior position.
-    </p>
-    <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
-      If you're looking for someone who writes clean code, communicates well
-      across teams, and brings genuine enthusiasm to the work — I'd love to
-      hear from you.
+    <p class="text-gray-600 text-sm leading-relaxed mb-8 max-w-xs">
+      Seeking graduate, placement, or junior roles — clean code, strong communication, genuine enthusiasm.
     </p>
 
     <!-- Contact cards -->
-    <div class="flex flex-col gap-3 mb-8">
+    <div class="flex flex-col gap-2.5 mb-6">
       {contacts.map((c) => (
         <a
           href={c.href}
           target={c.href.startsWith("mailto") ? undefined : "_blank"}
           rel={c.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-          class="group flex items-center gap-4 p-4 rounded-xl border border-white/[0.08] hover:border-white/[0.20] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200"
+          class="group flex items-center gap-4 p-4 rounded-xl border border-white/[0.07] hover:border-white/[0.16] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200"
         >
-          <div class="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-gray-400 group-hover:text-white transition-colors flex-shrink-0">
+          <div class="w-9 h-9 rounded-lg bg-white/[0.05] border border-white/[0.07] flex items-center justify-center text-gray-500 group-hover:text-white transition-colors flex-shrink-0">
             <span set:html={c.icon} />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-xs text-gray-600 font-medium mb-0.5">{c.label}</p>
+            <p class="text-[10px] text-gray-600 font-medium mb-0.5 uppercase tracking-wider">{c.label}</p>
             <p class="text-sm text-white font-medium truncate">{c.value}</p>
-            <p class="text-xs text-gray-600 mt-0.5">{c.description}</p>
           </div>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 group-hover:text-gray-400 transition-colors flex-shrink-0">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 group-hover:text-gray-400 transition-colors flex-shrink-0">
             <path d="M7 17L17 7M7 7h10v10"/>
           </svg>
         </a>
       ))}
     </div>
 
-    <!-- Availability note -->
+    <!-- Availability badge -->
     <div class="flex items-center gap-3 bg-emerald-500/[0.06] border border-emerald-500/20 rounded-xl px-4 py-3">
       <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot flex-shrink-0"></span>
       <p class="text-sm text-emerald-300/80">
@@ -54,5 +50,6 @@ import { site } from "@/data/site";
         — {site.availability.detail}
       </p>
     </div>
+
   </div>
 </div>

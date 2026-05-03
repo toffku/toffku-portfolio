@@ -5,81 +5,80 @@ import { navItems } from "@/data/navigation";
 import { socials } from "@/data/socials";
 ---
 
-<aside
-  id="nav-panel"
-  class="w-64 flex-shrink-0 flex flex-col bg-[#111] border-r border-white/[0.07] fixed inset-y-0 left-0 z-50 -translate-x-full transition-transform duration-300 ease-in-out md:static md:translate-x-0 md:transition-none"
->
-  <!-- Mobile close header -->
-  <div class="md:hidden flex items-center justify-between px-4 py-3 border-b border-white/[0.07]">
-    <span class="text-xs text-gray-500 uppercase tracking-widest font-semibold">Menu</span>
-    <button
-      id="nav-close"
-      aria-label="Close menu"
-      class="p-1.5 rounded-lg hover:bg-white/[0.08] text-gray-400 hover:text-white transition-colors"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-  </div>
+<div class="h-full flex flex-col">
 
   <!-- Profile -->
-  <div class="p-5 pb-4">
-    <div class="flex items-center gap-3 mb-4">
-      <div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 relative bg-white/[0.08]">
-        <Image
-          src={site.avatar}
-          alt={`${site.name} avatar`}
-          width={40}
-          height={40}
-          class="object-cover w-full h-full"
-          loading="eager"
-        />
-      </div>
-      <div class="min-w-0">
-        <p class="text-sm font-semibold text-white truncate">{site.name} ({site.handle})</p>
-        <p class="text-xs text-gray-300 truncate">{site.title}</p>
-      </div>
+  <div class="px-5 pt-8 pb-6 flex-shrink-0">
+    <div class="w-10 h-10 rounded-xl overflow-hidden ring-1 ring-white/[0.08] mb-4">
+      <Image
+        src={site.avatar}
+        alt={`${site.name} avatar`}
+        width={40}
+        height={40}
+        class="object-cover w-full h-full"
+        loading="eager"
+      />
     </div>
+    <p class="text-sm font-semibold text-white leading-none mb-1">{site.name}</p>
+    <p class="text-xs text-gray-500 mb-3">{site.title}</p>
     {site.availability.available && (
-      <div class="flex items-center gap-2 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full px-3 py-1.5 w-fit">
+      <div class="flex items-center gap-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot flex-shrink-0"></span>
-        <span class="text-xs text-emerald-400 font-medium">{site.availability.label}</span>
+        <span class="text-[11px] text-emerald-400/80 font-medium">{site.availability.label}</span>
       </div>
     )}
   </div>
 
-  <div class="h-px bg-white/[0.06] mx-4"></div>
+  <!-- Divider -->
+  <div class="h-px bg-white/[0.05] mx-5 flex-shrink-0"></div>
 
-  <!-- Nav items -->
-  <nav class="flex-1 p-3 pt-3 flex flex-col gap-0.5" role="navigation" aria-label="Main navigation">
-    {navItems.map(({ id, label, icon, activeClasses }, i) => (
+  <!-- Navigation — vertically centered in remaining space -->
+  <nav
+    role="navigation"
+    aria-label="Section navigation"
+    class="flex-1 px-3 flex flex-col justify-center gap-0.5"
+  >
+    {navItems.map(({ id, label, icon }, i) => (
       <button
         data-nav-item={id}
         aria-current={i === 0 ? "page" : "false"}
-        class={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-white/[0.05] transition-all duration-150 border-l-2 border-transparent cursor-pointer ${activeClasses}`}
+        class="group relative flex items-center gap-3 w-full py-2.5 pl-4 pr-3 rounded-lg text-left cursor-pointer hover:bg-white/[0.04] aria-[current=page]:bg-white/[0.05] transition-colors duration-150"
       >
-        <span class="flex-shrink-0" set:html={icon} />
-        {label}
+        <!-- Active indicator bar -->
+        <span class="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-full bg-indigo-400 opacity-0 group-aria-[current=page]:opacity-100 transition-opacity duration-200 ease-out"></span>
+
+        <!-- Icon -->
+        <span
+          class="text-gray-600 group-hover:text-gray-400 group-aria-[current=page]:text-indigo-400 transition-colors duration-150 flex-shrink-0"
+          set:html={icon}
+        />
+
+        <!-- Label -->
+        <span class="text-sm font-medium text-gray-500 group-hover:text-gray-200 group-aria-[current=page]:text-white transition-colors duration-150">
+          {label}
+        </span>
       </button>
     ))}
   </nav>
 
+  <!-- Divider -->
+  <div class="h-px bg-white/[0.05] mx-5 flex-shrink-0"></div>
+
   <!-- Social links -->
-  <div class="p-4 border-t border-white/[0.06]">
-    <p class="text-xs text-gray-700 uppercase tracking-widest font-semibold mb-3">Connect</p>
-    <div class="flex items-center gap-2">
+  <div class="px-5 py-5 flex-shrink-0">
+    <div class="flex items-center gap-1.5">
       {socials.map((social) => (
         <a
           href={social.href}
           target={social.href.startsWith("mailto") ? undefined : "_blank"}
           rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
           aria-label={social.label}
-          class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
+          class="w-7 h-7 rounded-md bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] flex items-center justify-center text-gray-600 hover:text-gray-300 transition-all duration-150"
         >
           <span set:html={social.icon} />
         </a>
       ))}
     </div>
   </div>
-</aside>
+
+</div>

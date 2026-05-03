@@ -26,7 +26,7 @@ export const educationEntries: EducationEntry[] = [
     status: "In Progress",
     inProgress: true,
     description:
-      "Undergraduate degree covering software engineering principles, systems design, algorithms, and full-stack development.",
+      "Software engineering programme covering systems design, algorithms, and full-stack development.",
     highlights: ["Systems Design", "Algorithms & Data Structures", "Mobile Development", "Honours Project"],
   },
   {
@@ -36,7 +36,7 @@ export const educationEntries: EducationEntry[] = [
     status: "Completed",
     inProgress: false,
     description:
-      "National Progression Award in Software Development, building foundational programming and problem-solving skills.",
+      "NPA in Software Development — foundational programming and problem-solving skills.",
     highlights: ["Software Development", "Programming Fundamentals", "Problem Solving"],
   },
 ];

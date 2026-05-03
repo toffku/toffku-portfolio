@@ -19,10 +19,10 @@ export const experienceEntries: ExperienceEntry[] = [
     period: "Sep 2024 – Sep 2025",
     type: "Full-time",
     bullets: [
-      "Collaborated with senior developers on internal and customer-facing applications.",
+      "Built internal tools and customer-facing apps alongside senior engineers.",
       "Translated business requirements into scalable technical solutions.",
-      "Managed deployment cycles and contributed to release planning.",
-      "Facilitated cross-departmental collaboration and global team communication.",
+      "Managed deployment cycles and release planning.",
+      "Coordinated cross-team communication across global stakeholders.",
     ],
   },
   {
@@ -42,7 +42,7 @@ export const experienceEntries: ExperienceEntry[] = [
     type: "Competition",
     bullets: [
       "Won a competitive game development challenge hosted by Ubisoft Reflections.",
-      "Designed and built a complete game prototype under competition constraints.",
+      "Designed and shipped a complete prototype under competition constraints.",
     ],
   },
   {

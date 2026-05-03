@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     name: "HPE Parts Validation",
     description:
-      "Mobile application for validating and tracking hardware components. Built for Hewlett Packard Enterprise to streamline parts verification workflows across teams.",
+      "Mobile app for validating and tracking hardware components — built for Hewlett Packard Enterprise.",
     tags: ["TypeScript", "React Native", "SQL"],
     github: null,
     featured: true,
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     name: "UCycle",
     description:
-      "Cycling route planner mobile application developed as my Honours Project. Integrates route planning features to help cyclists discover and navigate routes.",
+      "Honours Project — cycling route planner with route discovery and turn-by-turn navigation.",
     tags: ["TypeScript", "React Native", "Expo"],
     github: "https://github.com/toffku/UCycle",
     featured: true,
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     name: "simple-pm",
     description:
-      "Lightweight project management application with a clean interface for tracking tasks and organising work. Built with a Node.js backend and TypeScript throughout.",
+      "Lightweight task manager with a clean interface. TypeScript throughout, Node.js backend.",
     tags: ["TypeScript", "Node.js"],
     github: "https://github.com/toffku/simple-pm",
     featured: false,
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   {
     name: "Onwards to the Past",
     description:
-      "Web-based top-down platformer game — a JavaScript rewrite of a game originally created with GML. Runs entirely in the browser with no dependencies.",
+      "Browser-based top-down platformer — a JavaScript rewrite of a GML original. Zero dependencies.",
     tags: ["JavaScript", "Canvas API", "Game Dev"],
     github: "https://github.com/toffku/onwards-to-the-past-js",
     featured: false,
