@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Fraunces", Georgia, serif;
 }
 
 html,
