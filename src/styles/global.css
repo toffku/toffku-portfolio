@@ -32,7 +32,7 @@ body {
 .pulse-dot { animation: pulseDot 2.5s ease-in-out infinite; }
 
 #nav-indicator {
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+  transition: transform 80ms ease-out, opacity 200ms ease;
   box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
 }
 

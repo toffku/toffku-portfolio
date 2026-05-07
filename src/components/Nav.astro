@@ -50,7 +50,7 @@ import { socials } from "@/data/socials";
       <button
         data-nav-item={id}
         aria-current={i === 0 ? "page" : "false"}
-        class="group relative flex items-center gap-3 w-full py-2.5 pl-4 pr-4 rounded-lg text-left cursor-pointer hover:bg-white/[0.04] aria-[current=page]:bg-white/[0.05] transition-all duration-200 ease-out origin-left aria-[current=page]:scale-[1.12] aria-[current=false]:scale-[0.90]"
+        class="group relative flex items-center gap-3 w-full py-2.5 pl-4 pr-4 rounded-lg text-left cursor-pointer hover:bg-white/[0.04] aria-[current=page]:bg-white/[0.05] aria-[current=page]:my-4 transition-all duration-200 ease-out origin-left aria-[current=page]:scale-[1.12] aria-[current=false]:scale-[0.90]"
       >
         <!-- Icon -->
         <span
@@ -94,26 +94,38 @@ import { socials } from "@/data/socials";
   const navRail = document.querySelector<HTMLElement>('[data-nav-rail]');
 
   if (indicator && navRail) {
-    function updateIndicator(animate: boolean): void {
+    // Track for longer than the button transition (200ms) so the indicator
+    // catches up fully via its own short 80ms CSS transition.
+    const TRACK_MS = 300;
+    let rafId: number | null = null;
+
+    function updatePosition(): void {
       const active = navRail!.querySelector<HTMLElement>('[data-nav-item][aria-current="page"]');
       if (!active) return;
       const navRect = navRail!.getBoundingClientRect();
       const btnRect = active.getBoundingClientRect();
       indicator!.style.height = `${btnRect.height}px`;
-      if (!animate) indicator!.style.transition = 'none';
       indicator!.style.transform = `translateY(${btnRect.top - navRect.top}px)`;
-      if (!animate) {
-        indicator!.getBoundingClientRect(); // force reflow before restoring transition
-        indicator!.style.transition = '';
-      }
     }
 
-    // Set initial position without animation, then fade in
-    updateIndicator(false);
+    function startTracking(): void {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      const end = performance.now() + TRACK_MS;
+      function tick(): void {
+        updatePosition();
+        rafId = performance.now() < end ? requestAnimationFrame(tick) : null;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Set initial position instantly, then fade the indicator in.
+    indicator.style.transition = 'none';
+    updatePosition();
+    indicator.getBoundingClientRect();
+    indicator.style.transition = '';
     requestAnimationFrame(() => requestAnimationFrame(() => { indicator.style.opacity = '1'; }));
 
-    // Slide indicator whenever the active nav item changes
-    const observer = new MutationObserver(() => updateIndicator(true));
+    const observer = new MutationObserver(startTracking);
     navRail.querySelectorAll<HTMLElement>('[data-nav-item]').forEach(btn => {
       observer.observe(btn, { attributes: true, attributeFilter: ['aria-current'] });
     });

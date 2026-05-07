@@ -45,8 +45,8 @@ export const site: SiteConfig = {
   availability: {
     available: true,
     label: "Open to work",
-    detailEmphasis: "Available for opportunities",
-    detail: "open to full-time, graduate, and junior roles from 2026 onwards.",
+    detailEmphasis: "Available for opportunities.",
+    detail: "Open to full-time, graduate, and junior roles from 2026 onwards.",
   },
   stats: [
     {
@@ -78,7 +78,7 @@ export const site: SiteConfig = {
     },
   ],
   meta: {
-    title: "Kristoff Urcia — Software Engineer",
+    title: "Kristoff Urcia | Software Engineer",
     description:
       "Software Engineer based in Glasgow. Portfolio showcasing projects in TypeScript, React Native, and web development.",
   },

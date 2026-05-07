@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     name: "HPE Parts Validation",
     description:
-      "Mobile app for validating and tracking hardware components — built for Hewlett Packard Enterprise.",
+      "Mobile app for validating and tracking hardware components, built for Hewlett Packard Enterprise.",
     tags: ["TypeScript", "React Native", "SQL"],
     github: null,
     featured: true,
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     name: "UCycle",
     description:
-      "Honours Project — cycling route planner with route discovery and turn-by-turn navigation.",
+      "Honours Project: cycling route planner with route discovery and turn-by-turn navigation.",
     tags: ["TypeScript", "React Native", "Expo"],
     github: "https://github.com/toffku/UCycle",
     featured: true,
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   {
     name: "Onwards to the Past",
     description:
-      "Browser-based top-down platformer — a JavaScript rewrite of a GML original. Zero dependencies.",
+      "Browser-based top-down platformer, rewritten from GML to JavaScript. Zero dependencies.",
     tags: ["JavaScript", "Canvas API", "Game Dev"],
     github: "https://github.com/toffku/onwards-to-the-past-js",
     featured: false,

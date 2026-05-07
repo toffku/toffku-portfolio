@@ -36,7 +36,7 @@ export const educationEntries: EducationEntry[] = [
     status: "Completed",
     inProgress: false,
     description:
-      "NPA in Software Development — foundational programming and problem-solving skills.",
+      "NPA in Software Development covering foundational programming and problem-solving skills.",
     highlights: ["Software Development", "Programming Fundamentals", "Problem Solving"],
   },
 ];
