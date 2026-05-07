@@ -36,7 +36,7 @@ export const navItems: NavItem[] = [
   },
   {
     id: "hire",
-    label: "Hire Me",
+    label: "Work With Me",
     icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
     activeClasses:
       "aria-[current=page]:text-emerald-300 aria-[current=page]:bg-emerald-500/[0.08] aria-[current=page]:border-emerald-400/30",
