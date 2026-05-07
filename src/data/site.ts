@@ -44,7 +44,7 @@ export const site: SiteConfig = {
   avatar: avatarSrc as ImageMetadata,
   availability: {
     available: true,
-    label: "Open to work",
+    label: "Currently building",
     detailEmphasis: "Available for opportunities.",
     detail: "Open to full-time, graduate, and junior roles from 2026 onwards.",
   },

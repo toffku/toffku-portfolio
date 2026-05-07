@@ -31,6 +31,12 @@ body {
 .anim-out { animation: fadeDown 0.18s ease-in forwards; pointer-events: none;  }
 .pulse-dot { animation: pulseDot 2.5s ease-in-out infinite; }
 
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.status-spin { animation: spinSlow 4s linear infinite; }
+
 #nav-indicator {
   transition: transform 80ms ease-out, opacity 200ms ease;
   box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
