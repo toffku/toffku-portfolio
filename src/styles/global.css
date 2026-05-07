@@ -31,6 +31,11 @@ body {
 .anim-out { animation: fadeDown 0.18s ease-in forwards; pointer-events: none;  }
 .pulse-dot { animation: pulseDot 2.5s ease-in-out infinite; }
 
+#nav-indicator {
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+  box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
+}
+
 ::-webkit-scrollbar       { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.2); border-radius: 2px; }
