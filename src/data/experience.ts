@@ -7,9 +7,9 @@ export interface ExperienceEntry {
 }
 
 export const typeColors: Record<string, string> = {
-  "Full-time":   "bg-green-500/10 text-green-400/80 border-green-500/20",
-  "Part-time":   "bg-blue-500/10 text-blue-400/80 border-blue-500/20",
-  "Competition": "bg-amber-500/10 text-amber-400/80 border-amber-500/20",
+  "Full-time":   "text-green-400/80",
+  "Part-time":   "text-blue-400/80",
+  "Competition": "text-amber-400/80",
 };
 
 export const experienceEntries: ExperienceEntry[] = [

@@ -4,8 +4,6 @@ import avatarSrc from "../assets/images/tk-square.jpg";
 export interface StatChip {
   label: string;
   color: {
-    bg: string;
-    border: string;
     dot: string;
     text: string;
   };
@@ -52,8 +50,6 @@ export const site: SiteConfig = {
     {
       label: "BSc Software Engineering",
       color: {
-        bg: "bg-indigo-500/[0.08]",
-        border: "border-indigo-500/20",
         dot: "bg-indigo-400/60",
         text: "text-indigo-300/80",
       },
@@ -61,8 +57,6 @@ export const site: SiteConfig = {
     {
       label: "1+ YOE",
       color: {
-        bg: "bg-amber-500/[0.08]",
-        border: "border-amber-500/20",
         dot: "bg-amber-400/60",
         text: "text-amber-300/80",
       },
@@ -70,8 +64,6 @@ export const site: SiteConfig = {
     {
       label: "Glasgow, Scotland",
       color: {
-        bg: "bg-sky-500/[0.08]",
-        border: "border-sky-500/20",
         dot: "bg-sky-400/60",
         text: "text-sky-300/80",
       },

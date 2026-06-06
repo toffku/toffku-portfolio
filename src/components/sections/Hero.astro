@@ -1,64 +1,57 @@
 ---
 import { site } from "@/data/site";
 import { socials } from "@/data/socials";
-
 ---
 
 <div class="min-h-full flex flex-col justify-center px-8 md:px-10 py-14">
   <div class="max-w-lg">
 
-    <p class="font-mono text-xs text-white/[0.18] mb-7 tracking-wider">
-      ~/portfolio $ whoami
-    </p>
+    <p class="font-mono text-xs text-white/[0.18] mb-8 tracking-wider">~/portfolio $ whoami</p>
 
-    <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-4">
-      
-      <span class="text-white">{site.name} </span>
+    <h1 class="text-5xl md:text-6xl font-bold leading-[1.02] tracking-tight text-white mb-6">
+      {site.name}
     </h1>
 
-    <p class="text-gray-500 text-base font-medium mb-3">{site.title}</p>
+    <div class="h-px bg-white/[0.07] mb-6"></div>
 
-    <p class="text-gray-600 text-sm leading-relaxed mb-10 max-w-xs">
-      {site.bio}
-    </p>
-
-    <!-- Hire Me CTA — standout -->
-    <div class="mb-10">
-      <button
-        data-nav-item="hire"
-        class="group inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-        Hire Me
-      </button>
-    </div>
-
-    <!-- Stats chips -->
-    <div class="flex flex-wrap gap-2 mb-8">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-7">
+      <span class="text-gray-500 text-xs font-light">{site.title}</span>
       {site.stats.map((stat) => (
-        <div class={`flex items-center gap-2 ${stat.color.bg} border ${stat.color.border} rounded-full px-3 py-1.5`}>
-          <span class={`w-1 h-1 rounded-full ${stat.color.dot}`}></span>
-          <span class={`text-xs ${stat.color.text} font-mono`}>{stat.label}</span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-white/[0.15] text-xs">·</span>
+          <span class={`text-xs font-mono ${stat.color.text}`}>{stat.label}</span>
         </div>
       ))}
     </div>
 
-    <!-- Social links — mobile only (desktop shows in header) -->
-    <div class="flex gap-2 md:hidden">
-      {socials.map((social) => (
-        <a
-          href={social.href}
-          target={social.href.startsWith("mailto") ? undefined : "_blank"}
-          rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-          aria-label={social.label}
-          class="w-8 h-8 rounded-md bg-white/[0.05] hover:bg-white/[0.10] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white transition-all duration-150"
-        >
-          <span set:html={social.icon} />
-        </a>
-      ))}
+    <p class="text-gray-600 text-sm font-light leading-relaxed mb-10 max-w-sm">
+      {site.bio}
+    </p>
+
+    <div class="flex items-center gap-6">
+      <button
+        data-nav-item="hire"
+        class="group inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-semibold cursor-pointer transition-colors duration-200"
+      >
+        Hire Me
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 transition-transform duration-200">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div class="flex items-center gap-4 md:hidden">
+        {socials.map((social) => (
+          <a
+            href={social.href}
+            target={social.href.startsWith("mailto") ? undefined : "_blank"}
+            rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+            aria-label={social.label}
+            class="text-gray-600 hover:text-white transition-colors duration-150"
+          >
+            <span set:html={social.icon} />
+          </a>
+        ))}
+      </div>
     </div>
 
   </div>

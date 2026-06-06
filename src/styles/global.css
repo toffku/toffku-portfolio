@@ -1,9 +1,40 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Kulim Park";
+  src: url("/src/assets/fonts/KulimPark-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kulim Park";
+  src: url("/src/assets/fonts/KulimPark-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kulim Park";
+  src: url("/src/assets/fonts/KulimPark-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kulim Park";
+  src: url("/src/assets/fonts/KulimPark-Bold.ttf") format("truetype");
+  font-weight: 700 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Kulim Park", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  --font-display: "Fraunces", Georgia, serif;
 }
 
 html,

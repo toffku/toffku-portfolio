@@ -9,13 +9,13 @@ export interface EducationEntry {
 }
 
 export const highlightColors: Record<string, string> = {
-  "Systems Design":               "bg-indigo-500/10 text-indigo-400/80 border-indigo-500/20",
-  "Algorithms & Data Structures": "bg-cyan-500/10 text-cyan-400/80 border-cyan-500/20",
-  "Mobile Development":           "bg-blue-500/10 text-blue-400/80 border-blue-500/20",
-  "Honours Project":              "bg-amber-500/10 text-amber-400/80 border-amber-500/20",
-  "Software Development":         "bg-green-500/10 text-green-400/80 border-green-500/20",
-  "Programming Fundamentals":     "bg-purple-500/10 text-purple-400/80 border-purple-500/20",
-  "Problem Solving":              "bg-pink-500/10 text-pink-400/80 border-pink-500/20",
+  "Systems Design":               "text-indigo-400/80",
+  "Algorithms & Data Structures": "text-cyan-400/80",
+  "Mobile Development":           "text-blue-400/80",
+  "Honours Project":              "text-amber-400/80",
+  "Software Development":         "text-green-400/80",
+  "Programming Fundamentals":     "text-purple-400/80",
+  "Problem Solving":              "text-pink-400/80",
 };
 
 export const educationEntries: EducationEntry[] = [

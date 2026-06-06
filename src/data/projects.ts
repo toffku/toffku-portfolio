@@ -7,14 +7,14 @@ export interface Project {
 }
 
 export const tagColors: Record<string, string> = {
-  "TypeScript":   "bg-blue-500/10 text-blue-400/80 border-blue-500/20",
-  "JavaScript":   "bg-yellow-400/10 text-yellow-400/80 border-yellow-400/20",
-  "React Native": "bg-cyan-500/10 text-cyan-400/80 border-cyan-500/20",
-  "Expo":         "bg-indigo-500/10 text-indigo-400/80 border-indigo-500/20",
-  "Node.js":      "bg-green-500/10 text-green-400/80 border-green-500/20",
-  "SQL":          "bg-amber-500/10 text-amber-400/80 border-amber-500/20",
-  "Canvas API":   "bg-pink-500/10 text-pink-400/80 border-pink-500/20",
-  "Game Dev":     "bg-purple-500/10 text-purple-400/80 border-purple-500/20",
+  "TypeScript":   "text-blue-400/80",
+  "JavaScript":   "text-yellow-400/80",
+  "React Native": "text-cyan-400/80",
+  "Expo":         "text-indigo-400/80",
+  "Node.js":      "text-green-400/80",
+  "SQL":          "text-amber-400/80",
+  "Canvas API":   "text-pink-400/80",
+  "Game Dev":     "text-purple-400/80",
 };
 
 export const projects: Project[] = [
