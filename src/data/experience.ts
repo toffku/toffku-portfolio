@@ -3,16 +3,28 @@ export interface ExperienceEntry {
   company: string;
   period: string;
   type: string;
+  current?: boolean;
   bullets: string[];
 }
 
 export const typeColors: Record<string, string> = {
-  "Full-time":   "text-green-400/80",
-  "Part-time":   "text-blue-400/80",
-  "Competition": "text-amber-400/80",
+  "Full-time": "text-green-400/80",
+  "Part-time": "text-blue-400/80",
+  Competition: "text-amber-400/80",
 };
 
 export const experienceEntries: ExperienceEntry[] = [
+  {
+    role: "Graduate Digital Consultant",
+    company: "DTG",
+    period: "Jun 2026 – Present",
+    type: "Full-time",
+    current: true,
+    bullets: [
+      "Developing and implementing digital strategies for clients in pharmaceutical and healthcare sectors.",
+      "Collaborating with cross-functional teams to deliver innovative solutions.",
+    ],
+  },
   {
     role: "Information Technology Development Assistant",
     company: "CCL Design",
@@ -33,16 +45,6 @@ export const experienceEntries: ExperienceEntry[] = [
     bullets: [
       "Manage and maintain the organisation's public-facing website.",
       "Ensure content accuracy, accessibility, and timely updates.",
-    ],
-  },
-  {
-    role: "Game Development Competition Winner",
-    company: "Ubisoft Reflections",
-    period: "Aug 2019",
-    type: "Competition",
-    bullets: [
-      "Won a competitive game development challenge hosted by Ubisoft Reflections.",
-      "Designed and shipped a complete prototype under competition constraints.",
     ],
   },
   {

@@ -7,14 +7,14 @@ export interface Project {
 }
 
 export const tagColors: Record<string, string> = {
-  "TypeScript":   "text-blue-400/80",
-  "JavaScript":   "text-yellow-400/80",
+  TypeScript: "text-blue-400/80",
+  JavaScript: "text-yellow-400/80",
   "React Native": "text-cyan-400/80",
-  "Expo":         "text-indigo-400/80",
-  "Node.js":      "text-green-400/80",
-  "SQL":          "text-amber-400/80",
-  "Canvas API":   "text-pink-400/80",
-  "Game Dev":     "text-purple-400/80",
+  Expo: "text-indigo-400/80",
+  "Node.js": "text-green-400/80",
+  SQL: "text-amber-400/80",
+  "Canvas API": "text-pink-400/80",
+  "Game Dev": "text-purple-400/80",
 };
 
 export const projects: Project[] = [
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     name: "UCycle",
     description:
-      "Honours Project: cycling route planner with route discovery and turn-by-turn navigation.",
+      "Honours Project:  a cycling route planner using MCDA to personalise route suggestions.",
     tags: ["TypeScript", "React Native", "Expo"],
     github: "https://github.com/toffku/UCycle",
     featured: true,

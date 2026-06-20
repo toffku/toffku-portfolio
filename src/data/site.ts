@@ -36,8 +36,8 @@ export interface SiteConfig {
 export const site: SiteConfig = {
   name: "Kristoff Urcia",
   handle: "toffku",
-  title: "Software Engineer",
-  bio: "Glasgow-based engineer who loves to code, create intuitive UI/UX, and learn new technologies.",
+  title: "",
+  bio: "Glasgow-based engineer who loves to code.",
   location: "Glasgow, Scotland",
   avatar: avatarSrc as ImageMetadata,
   availability: {
@@ -70,7 +70,7 @@ export const site: SiteConfig = {
     },
   ],
   meta: {
-    title: "Kristoff Urcia | Software Engineer",
+    title: "Kristoff Urcia | Portfolio",
     description:
       "Software Engineer based in Glasgow. Portfolio showcasing projects in TypeScript, React Native, and web development.",
   },

@@ -21,7 +21,7 @@ import { educationEntries } from "@/data/education";
             <div>
               <div class="flex items-start justify-between gap-4 mb-1">
                 <h3 class="text-base font-semibold text-white leading-snug">{entry.degree}</h3>
-                <span class={`text-sm font-semibold flex-shrink-0 ${entry.inProgress ? "text-emerald-400" : "text-gray-500"}`}>
+                <span class={`text-sm font-semibold flex-shrink-0 ${entry.inProgress ? "text-emerald-400" : entry.distinction ? "text-amber-400" : "text-gray-500"}`}>
                   {entry.status}
                 </span>
               </div>

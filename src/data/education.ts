@@ -4,6 +4,7 @@ export interface EducationEntry {
   period: string;
   status: string;
   inProgress: boolean;
+  distinction?: boolean;
   description: string;
   highlights: string[];
 }
@@ -23,8 +24,9 @@ export const educationEntries: EducationEntry[] = [
     degree: "BSc (Hons) Software Engineering",
     institution: "University of Strathclyde",
     period: "Sep 2021 – Jun 2026",
-    status: "In Progress",
-    inProgress: true,
+    status: "First Class Honours",
+    inProgress: false,
+    distinction: true,
     description:
       "Software engineering programme covering systems design, algorithms, and full-stack development.",
     highlights: ["Systems Design", "Algorithms & Data Structures", "Mobile Development", "Honours Project"],

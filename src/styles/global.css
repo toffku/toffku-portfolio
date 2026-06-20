@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* ── Ambient background glows ───────────────────────────────────────── */
-/* Layered radial gradients echoing the old portfolio's ellipse depth system */
-
 /* ── Custom cursor ──────────────────────────────────────────────────── */
 @media (hover: hover) and (pointer: fine) {
   html.has-cursor,
@@ -87,7 +84,7 @@
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: #0e0e12;
+  background: #111;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,7 +184,7 @@
 
 @theme {
   --font-sans: "Kulim Park", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "Consolas", "Courier New", monospace;
   --font-label: "Space Grotesk", system-ui, sans-serif;
 }
 
@@ -198,23 +195,7 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(
-      ellipse at 88% 8%,
-      rgba(99, 102, 241, 0.08) 0%,
-      transparent 52%
-    ),
-    radial-gradient(
-      ellipse at 8% 62%,
-      rgba(139, 92, 246, 0.06) 0%,
-      transparent 48%
-    ),
-    radial-gradient(
-      ellipse at 55% 98%,
-      rgba(245, 158, 11, 0.04) 0%,
-      transparent 42%
-    ),
-    #0e0e12;
+  background: #111;
 }
 
 @keyframes fadeUp {
