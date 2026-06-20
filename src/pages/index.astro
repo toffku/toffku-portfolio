@@ -94,7 +94,14 @@ import '../styles/global.css';
       target.classList.remove('hidden');
       target.setAttribute('aria-hidden', 'false');
       target.classList.add('anim-in');
-      target.addEventListener('animationend', () => target.classList.remove('anim-in'), { once: true });
+      // Only react to the section's own animationend, not bubbled child events.
+      const onAnimEnd = (e: AnimationEvent) => {
+        if (e.target === target) {
+          target.classList.remove('anim-in');
+          target.removeEventListener('animationend', onAnimEnd);
+        }
+      };
+      target.addEventListener('animationend', onAnimEnd);
       target.scrollTop = 0;
     }, 300);
 

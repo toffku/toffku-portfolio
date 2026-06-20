@@ -1,5 +1,5 @@
 ---
-import { projects } from "@/data/projects";
+import { projects, tagColors } from "@/data/projects";
 ---
 
 <div class="min-h-full px-8 md:px-10 py-10 md:py-14">
@@ -44,7 +44,7 @@ import { projects } from "@/data/projects";
                 {project.tags.map((tag, i) => (
                   <span class="contents">
                     {i > 0 && <span aria-hidden="true" class="w-px h-2.5 bg-white/[0.12] flex-shrink-0" />}
-                    <span class="font-label text-xs text-white/45 tracking-wide">{tag}</span>
+                    <span class={`font-label text-xs tracking-wide ${tagColors[tag] ?? 'text-white/45'}`}>{tag}</span>
                   </span>
                 ))}
               </div>

@@ -1,5 +1,6 @@
 ---
 import { site } from "@/data/site";
+import Cursor from "@/components/Cursor.astro";
 
 interface Props {
   title?: string;
@@ -27,7 +28,28 @@ const {
     />
     <title>{title}</title>
   </head>
-  <body class="font-sans bg-[#0e0e12] text-gray-100 antialiased">
+  <body class="font-sans text-gray-100 antialiased">
+
+    <!-- Page-load entrance: "KU" monogram fades in then the overlay lifts -->
+    <div id="page-loader" aria-hidden="true">
+      <span id="loader-mark">KU</span>
+    </div>
+
+    <Cursor />
     <slot />
+
   </body>
 </html>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('page-loader');
+    if (!loader) return;
+    const elapsed = performance.now();
+    const remaining = Math.max(0, 700 - elapsed);
+    setTimeout(() => {
+      loader.classList.add('is-done');
+      loader.addEventListener('animationend', () => loader.remove(), { once: true });
+    }, remaining);
+  });
+</script>

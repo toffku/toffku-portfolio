@@ -1,5 +1,158 @@
 @import "tailwindcss";
 
+/* ── Ambient background glows ───────────────────────────────────────── */
+/* Layered radial gradients echoing the old portfolio's ellipse depth system */
+
+/* ── Custom cursor ──────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button,
+  html.has-cursor [role="button"],
+  html.has-cursor input,
+  html.has-cursor label,
+  html.has-cursor select,
+  html.has-cursor textarea {
+    cursor: none !important;
+  }
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transform: translate(
+    calc(var(--cursor-dot-x, -9999px) - 50%),
+    calc(var(--cursor-dot-y, -9999px) - 50%)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  transform: translate(
+    calc(var(--cursor-ring-x, -9999px) - 50%),
+    calc(var(--cursor-ring-y, -9999px) - 50%)
+  );
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    width 0.22s ease,
+    height 0.22s ease,
+    border-color 0.22s ease;
+}
+
+#cursor-ring.is-hovering {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(129, 140, 248, 0.5);
+}
+
+#cursor-ring.is-clicking {
+  width: 16px;
+  height: 16px;
+  transition:
+    width 0.08s ease,
+    height 0.08s ease,
+    opacity 0.3s ease,
+    border-color 0.22s ease;
+}
+
+@media (hover: none), (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ── Page-load entrance ─────────────────────────────────────────────── */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #0e0e12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-loader.is-done {
+  animation: loaderFadeOut 0.5s 0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes loaderFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+#loader-mark {
+  font-family: "Kulim Park", system-ui, sans-serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #fff;
+  opacity: 0;
+  animation: loaderMarkIn 1.6s 0.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loaderMarkIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(2);
+  }
+}
+
+/* ── Skills ticker ──────────────────────────────────────────────────── */
+.ticker-track {
+  animation: tickerScroll 32s linear infinite;
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Clip-path heading reveal ───────────────────────────────────────── */
+@keyframes revealClip {
+  from {
+    clip-path: inset(110% 0 0 0);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+.anim-in h2 {
+  animation: revealClip 0.52s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @font-face {
   font-family: "Kulim Park";
   src: url("/src/assets/fonts/KulimPark-Light.ttf") format("truetype");
@@ -44,46 +197,114 @@ body {
   overflow: hidden;
 }
 
+body {
+  background:
+    radial-gradient(
+      ellipse at 88% 8%,
+      rgba(99, 102, 241, 0.08) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse at 8% 62%,
+      rgba(139, 92, 246, 0.06) 0%,
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 55% 98%,
+      rgba(245, 158, 11, 0.04) 0%,
+      transparent 42%
+    ),
+    #0e0e12;
+}
+
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeDown {
-  from { opacity: 1; transform: translateY(0);    }
-  to   { opacity: 0; transform: translateY(-8px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes pulseDot {
-  0%, 100% { opacity: 1;   }
-  50%       { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
-.anim-in  { animation: fadeUp   0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.anim-out { animation: fadeDown 0.27s ease-in forwards; pointer-events: none;  }
-.pulse-dot { animation: pulseDot 3.75s ease-in-out infinite; }
+.anim-in {
+  animation: fadeUp 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.anim-out {
+  animation: fadeDown 0.27s ease-in forwards;
+  pointer-events: none;
+}
+.pulse-dot {
+  animation: pulseDot 3.75s ease-in-out infinite;
+}
 
 @keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.status-spin { animation: spinSlow 6s linear infinite; }
+.status-spin {
+  animation: spinSlow 6s linear infinite;
+}
 
 #nav-indicator {
-  transition: transform 120ms ease-out, opacity 300ms ease;
+  transition:
+    transform 120ms ease-out,
+    opacity 300ms ease;
   box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
 }
 
 #mobile-nav-indicator {
-  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), width 420ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
   box-shadow: 0 0 6px rgba(129, 140, 248, 0.45);
 }
 
-::-webkit-scrollbar       { width: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.2); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.45); }
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
 
 /* Row hover: spotlight the focused entry, dim siblings */
-.entry-list .entry-row { transition: opacity 300ms ease; }
-.entry-list:has(.entry-row:hover) .entry-row:not(:hover) { opacity: 0.35; }
+.entry-list .entry-row {
+  transition: opacity 300ms ease;
+}
+.entry-list:has(.entry-row:hover) .entry-row:not(:hover) {
+  opacity: 0.35;
+}

@@ -7,6 +7,44 @@ import { socials } from "@/data/socials";
 
 <div class="h-full flex flex-col">
 
+  <!-- Profile header -->
+  <div class="px-5 pt-6 pb-5 flex-shrink-0">
+    <div class="flex items-center gap-2.5 mb-3">
+      <Image
+        src={site.avatar}
+        alt={site.name}
+        width={34}
+        height={34}
+        class="w-[34px] h-[34px] rounded-full ring-1 ring-white/10 flex-shrink-0 object-cover"
+      />
+      <div class="min-w-0">
+        <p class="text-sm font-semibold text-white truncate leading-snug">{site.name}</p>
+        <p class="text-[11px] text-gray-500 truncate leading-snug mt-0.5">{site.title}</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-1.5">
+      <!-- Spinning loader icon for "currently building" status -->
+      <svg
+        class="status-spin text-emerald-400/70 flex-shrink-0"
+        width="10" height="10" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" aria-hidden="true"
+      >
+        <line x1="12" y1="2"  x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="4.93"  y1="4.93"  x2="7.76"  y2="7.76"/>
+        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+        <line x1="2"  y1="12" x2="6"  y2="12"/>
+        <line x1="18" y1="12" x2="22" y2="12"/>
+        <line x1="4.93"  y1="19.07" x2="7.76"  y2="16.24"/>
+        <line x1="16.24" y1="7.76"  x2="19.07" y2="4.93"/>
+      </svg>
+      <span class="text-[11px] text-gray-500">{site.availability.label}</span>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="h-px bg-white/[0.05] mx-5 flex-shrink-0 mb-1"></div>
 
   <!-- Navigation -->
   <nav
