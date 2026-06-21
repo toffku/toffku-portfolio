@@ -24,7 +24,6 @@ export interface SiteMeta {
 export interface SiteConfig {
   name: string;
   handle: string;
-  title: string;
   bio: string;
   location: string;
   avatar: ImageMetadata;
@@ -36,7 +35,6 @@ export interface SiteConfig {
 export const site: SiteConfig = {
   name: "Kristoff Urcia",
   handle: "toffku",
-  title: "",
   bio: "Glasgow-based engineer who loves to code.",
   location: "Glasgow, Scotland",
   avatar: avatarSrc as ImageMetadata,

@@ -260,13 +260,6 @@ body {
   box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
 }
 
-#mobile-nav-indicator {
-  transition:
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    width 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 300ms ease;
-  box-shadow: 0 0 6px rgba(129, 140, 248, 0.45);
-}
 
 ::-webkit-scrollbar {
   width: 3px;

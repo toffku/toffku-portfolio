@@ -5,7 +5,6 @@ export interface EducationEntry {
   status: string;
   inProgress: boolean;
   distinction?: boolean;
-  description: string;
   highlights: string[];
 }
 
@@ -27,8 +26,6 @@ export const educationEntries: EducationEntry[] = [
     status: "First Class Honours",
     inProgress: false,
     distinction: true,
-    description:
-      "Software engineering programme covering systems design, algorithms, and full-stack development.",
     highlights: ["Systems Design", "Algorithms & Data Structures", "Mobile Development", "Honours Project"],
   },
   {
@@ -37,8 +34,6 @@ export const educationEntries: EducationEntry[] = [
     period: "Aug 2019 – Jun 2021",
     status: "Completed",
     inProgress: false,
-    description:
-      "NPA in Software Development covering foundational programming and problem-solving skills.",
     highlights: ["Software Development", "Programming Fundamentals", "Problem Solving"],
   },
 ];
