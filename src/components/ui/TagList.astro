@@ -1,0 +1,16 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<ul class="flex flex-wrap items-center gap-x-2 gap-y-1.5" aria-label="Technologies">
+  {tags.map((tag, i) => (
+    <li class="contents">
+      {i > 0 && <span aria-hidden="true" class="w-px h-2.5 bg-white/[0.12] flex-shrink-0" />}
+      <span class="font-label text-xs text-white/45 tracking-wide">{tag}</span>
+    </li>
+  ))}
+</ul>

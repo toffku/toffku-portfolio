@@ -1,5 +1,6 @@
 ---
 import { site } from "@/data/site";
+import { socials } from "@/data/socials";
 import Cursor from "@/components/Cursor.astro";
 
 interface Props {
@@ -11,6 +12,23 @@ const {
   title = site.meta.title,
   description = site.meta.description,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.meta.url).href;
+const socialImage = new URL(site.avatar.src, site.meta.url).href;
+
+// Structured data so search engines can connect the site to the person.
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.meta.url,
+  image: socialImage,
+  jobTitle: site.jobTitle,
+  worksFor: { "@type": "Organization", name: "DTG (Digital Technologies Group)" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "University of Strathclyde" },
+  address: { "@type": "PostalAddress", addressLocality: "Glasgow", addressCountry: "GB" },
+  sameAs: socials.filter((s) => s.href.startsWith("http")).map((s) => s.href),
+};
 ---
 
 <!doctype html>
@@ -19,7 +37,24 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#09090b" />
+    <meta name="author" content={site.name} />
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Link previews (LinkedIn, Slack, iMessage) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

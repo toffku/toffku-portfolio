@@ -184,7 +184,7 @@
 
 @theme {
   --font-sans: "Kulim Park", system-ui, -apple-system, sans-serif;
-  --font-mono: "Consolas", "Courier New", monospace;
+  --font-mono: "JetBrains Mono", "Consolas", "Courier New", monospace;
   --font-label: "Space Grotesk", system-ui, sans-serif;
 }
 
