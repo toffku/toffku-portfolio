@@ -1,7 +1,6 @@
 ---
 import { experienceEntries, recognition } from "@/data/experience";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
-import BulletList from "@/components/ui/BulletList.astro";
 ---
 
 <div class="min-h-full px-8 md:px-10 py-10 md:py-14">
@@ -25,21 +24,8 @@ import BulletList from "@/components/ui/BulletList.astro";
             </div>
             <div>
               <h3 class="text-base font-semibold text-white leading-snug mb-1">{entry.role}</h3>
-              <p class="text-sm text-gray-400">{entry.company}</p>
-
-              {entry.bullets && (
-                <div class="mt-4">
-                  <BulletList items={entry.bullets} />
-                </div>
-              )}
-
-              {entry.engagements?.map((engagement) => (
-                <section class="mt-5">
-                  <h4 class="text-sm font-semibold text-gray-200">{engagement.title}</h4>
-                  <p class="text-xs text-gray-500 mt-0.5 mb-3">{engagement.context}</p>
-                  <BulletList items={engagement.bullets} />
-                </section>
-              ))}
+              <p class="text-sm text-gray-400 mb-3">{entry.company}</p>
+              <p class="text-sm text-gray-400 leading-relaxed">{entry.summary}</p>
             </div>
           </div>
         </article>

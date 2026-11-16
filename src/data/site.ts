@@ -24,7 +24,7 @@ export const site: SiteConfig = {
   handle: "toffku",
   jobTitle: "Software Engineer",
   employer: "DTG",
-  bio: "Software engineer and First Class graduate, building C#/.NET systems for warehouse robotics.",
+  bio: "Software engineer based in Glasgow, building reliable systems that solve real problems.",
   location: "Glasgow, Scotland",
   avatar: avatarSrc as ImageMetadata,
   contactIntro:
